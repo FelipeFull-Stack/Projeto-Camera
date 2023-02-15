@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4f91a282-e95a-465a-84ba-a523b1875d05"
+      }
+    },
+    "owner": "felipe_fullstack"
   }
 }
