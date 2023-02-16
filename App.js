@@ -1,8 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
-import { Camera } from "expo-camera";
-import React, { useState, useEffect, useRef } from "react";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { useState, useEffect, useRef } from 'react';
+import { Camera } from 'expo-camera';
+import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Image, SafeAreaView } from 'react-native';
 
 export default function App() {
   const camRef = useRef(null);
@@ -19,15 +18,17 @@ export default function App() {
   }, []);
 
   if (permission === null) {
-    return console.log("Permissão Negada!");
+    // console.log("Permissão Negada!");
+    return null;
   }
 
   if (permission === false) {
-    return console.log("Permissão Negada!");
+    // console.log("Permissão Negada!");
+    return null;
   }
 
   async function takePicture() {
-    if (camRef) {
+    if (camRef.current) {
       const data = await camRef.current.takePictureAsync();
       setPictureURI(data.uri);
       setOpen(true);
@@ -65,7 +66,7 @@ export default function App() {
         >
           <View style={{ flex: 1, justifyContent: "center", alignItems: "center", margin: 20 }}>
             <TouchableOpacity style={{ margin: 10 }} onPress={() => setOpen(false)}>
-              <FontAwesome name='window-close' soze={50} color="#FF0000" />
+              <FontAwesome name='window-close' size={50} color="#FF0000" />
             </TouchableOpacity>
             <Image
               style={{ width: "100%", height: 300, borderRadius: 20 }}
@@ -78,7 +79,6 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
