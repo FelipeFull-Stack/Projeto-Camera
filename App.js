@@ -38,7 +38,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Camera
-        style={{ flex: 1 }}
+        style={{ flex: 1, width: "100%", height: "100%" }}
         type={type}
         ref={camRef}
       >
@@ -48,6 +48,7 @@ export default function App() {
             onPress={() => {
               setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
             }}
+
           >
             <Text style={{ fontSize: 20, marginBottom: 13, color: "#FFF" }}>Trocar</Text>
           </TouchableOpacity>
@@ -55,7 +56,7 @@ export default function App() {
       </Camera>
 
       <TouchableOpacity style={styles.button} onPress={takePicture}>
-        <FontAwesome name='camera' size={23} color='#FFF' />
+        <FontAwesome name='camera' size={30} color='#FFF' />
       </TouchableOpacity>
 
       {pictureURI &&
